@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diario de Estudio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="contenedor">
+    <header class="cabecera">
+      <h1>Diario de Estudio</h1>
+    </header>
+
+    <section class="tarjeta racha">
+      <p class="racha-etiqueta">Tu racha actual</p>
+      <p class="racha-valor"><span id="racha-numero">0</span> 🔥</p>
+      <p class="racha-ayuda" id="racha-ayuda"></p>
+    </section>
+
+    <section class="tarjeta racha-mejor">
+      <p class="racha-mejor-etiqueta">Tu mejor racha</p>
+      <p class="racha-mejor-valor"><span id="racha-mejor-numero">0</span> 🔥</p>
+      <p class="racha-mejor-ayuda" id="racha-mejor-ayuda"></p>
+    </section>
+
+    <section class="tarjeta minutos-semana">
+      <p class="minutos-semana-etiqueta">Minutos esta semana</p>
+      <p class="minutos-semana-valor"><span id="minutos-semana-numero">0</span> min</p>
+      <p class="minutos-semana-ayuda" id="minutos-semana-ayuda"></p>
+    </section>
+
+    <section class="tarjeta objetivo">
+      <h2>Objetivo semanal</h2>
+
+      <p class="objetivo-sin" id="objetivo-sin">
+        Todavía no has fijado un objetivo semanal. Fija cuántos minutos quieres estudiar cada semana.
+      </p>
+
+      <div class="objetivo-progreso oculto" id="objetivo-progreso">
+        <p class="objetivo-cifras">
+          <span id="objetivo-llevas">0</span> / <span id="objetivo-meta">0</span> min
+        </p>
+        <div
+          class="objetivo-barra"
+          id="objetivo-barra"
+          role="progressbar"
+          aria-label="Progreso del objetivo semanal"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0">
+          <span class="objetivo-relleno" id="objetivo-relleno"></span>
+        </div>
+        <p class="objetivo-estado" id="objetivo-estado"></p>
+      </div>
+
+      <p class="objetivo-mensaje" id="objetivo-mensaje" aria-live="polite"></p>
+
+      <form id="formulario-objetivo" novalidate>
+        <label for="objetivo-minutos" id="objetivo-minutos-etiqueta">Minutos por semana</label>
+        <input type="number" id="objetivo-minutos" min="1" step="1" inputmode="numeric"
+          placeholder="300" aria-describedby="objetivo-error">
+        <button type="submit" id="objetivo-guardar">Fijar objetivo</button>
+        <button type="button" id="objetivo-quitar" class="oculto boton-secundario">Quitar objetivo</button>
+      </form>
+
+      <p class="objetivo-error oculto" id="objetivo-error" role="alert"></p>
+    </section>
+
+    <section class="tarjeta dias-mes">
+      <p class="dias-mes-etiqueta">Días estudiados este mes</p>
+      <p class="dias-mes-valor"><span id="dias-mes-numero">0</span> <span id="dias-mes-unidad">días</span></p>
+      <p class="dias-mes-ayuda" id="dias-mes-ayuda"></p>
+    </section>
+
+    <section class="tarjeta">
+      <h2>Registrar sesión</h2>
+      <form id="formulario">
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" required>
+
+        <label for="tema">Tema</label>
+        <input type="text" id="tema" placeholder="¿Qué has estudiado?" required>
+
+        <label for="minutos">Minutos</label>
+        <input type="number" id="minutos" min="1" placeholder="30" required>
+
+        <button type="submit">Guardar sesión</button>
+      </form>
+    </section>
+
+    <section class="tarjeta">
+      <h2>Mis sesiones</h2>
+      <ul class="lista" id="lista-sesiones"></ul>
+      <p class="sin-sesiones" id="sin-sesiones">Todavía no hay sesiones. ¡Empieza hoy tu racha!</p>
+    </section>
+
+    <section class="tarjeta mapa">
+      <h2>Tu constancia</h2>
+      <p class="sin-sesiones oculto" id="mapa-vacio">Todavía no hay sesiones para dibujar tu
+        mapa de calor. ¡Registra tu primera sesión!</p>
+      <div class="mapa-contenido oculto" id="mapa-contenido">
+        <div class="mapa-deslizante" id="mapa-deslizante">
+          <div class="mapa-meses" id="mapa-meses"></div>
+          <div class="mapa-cuerpo">
+            <ul class="mapa-dias" id="mapa-dias"></ul>
+            <div class="mapa-rejilla" id="mapa-rejilla"></div>
+          </div>
+        </div>
+        <div class="mapa-leyenda" id="mapa-leyenda"></div>
+      </div>
+      <p class="detalle oculto" id="detalle" role="tooltip"></p>
+    </section>
+  </main>
+
+  <script src="logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
